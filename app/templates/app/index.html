@@ -4,7 +4,19 @@
 {% block body %}
 	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 	<p>Illuminate</p>
-
+  
+   <div class="dropdown">
+        <button class="dropbtn" id="selectedOption" onclick="resetOrSelectOption('Model')">Model</button>
+        <div class="dropdown-content">
+        {% for index in options %}
+            <a onclick="resetOrSelectOption('{{ index.value }}', '{{ index.label }}', '{{ index.image_url }}')" id="{{ index.value }}">
+                <img src="{% static 'app/images-model/' %}{{ index.image_url }}" alt="Option Image" class="option-image">
+                {{ index.label }}
+            </a>
+        {% endfor %}
+        </div>
+    </div>
+  
 	<form method="post" action="{% url 'index' %}">
 		{% csrf_token %}
 		<label for="Prompt">Enter Text:</label>
@@ -49,4 +61,36 @@
 			}
 		</script>
 	{% endif %}
+
+  <script>
+        /* Salvez ultima varianta selectata */
+        var lastSelectedOption = '';
+
+        function resetOrSelectOption(value, label, image_url) {
+            // Remove 'selected' class from the last selected option
+            if (lastSelectedOption !== '') {
+                document.getElementById(lastSelectedOption).classList.remove('selected');
+            }
+                
+            var selectedOptionButton = document.getElementById('selectedOption');
+            var final_url = "{% static 'app/images-model/' %}" + image_url;
+
+            if (lastSelectedOption == value) {
+                document.getElementById('selectedOption').innerHTML = 'Model';
+                selectedOptionButton.style.backgroundImage = 'none';
+                lastSelectedOption = '';
+
+                // Remove 'selected' class from the selected option
+                document.getElementById(value).classList.remove('selected');
+            } else {
+                document.getElementById('selectedOption').innerHTML = value;
+                selectedOptionButton.style.backgroundImage = 'url("' + final_url + '")';
+                lastSelectedOption = value;
+
+                // Add 'selected' class to the selected option
+                document.getElementById(value).classList.add('selected'); 
+            }
+        }
+
+    </script>
 {% endblock %}
