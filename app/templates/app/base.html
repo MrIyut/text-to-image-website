@@ -4,10 +4,155 @@
 
 <head>
 	<title>Image Illuminated</title>
+	<style>
+		
+        body {
+            font-family: 'cookie', sans-serif;
+			background-image: url('imagine_lampa.jpg');
+   			background-size: cover; /* Ajustează mărimea imaginii pentru a acoperi întreaga zonă a corpului paginii */
+    		background-position: center; /* Centrează imaginea pe ecran */
+			background-color: #7f7979;
+        }
+
+        p {
+            font-family: 'cookie', sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+            font-style: italic;
+            color: #0f0f0f;
+            text-align: center;
+        }
+		/* linie neagra */
+        hr {
+            width: 79%;
+            border: 1px solid #000;
+            margin: 20px auto;
+        }
+		button {
+			font-family: 'cookie', sans-serif;
+            font-size: 16px;
+            padding: 10px 20px;
+            cursor: pointer;
+			border: 2px solid #000;
+			background-color: #a92010;
+   			border-radius: 8px; /* vreau ca butonul sa aiba margini rotunjite */
+			position: absolute; /* Setează poziționarea absolută */
+    		top: 400px; /* Ajustează poziția verticală în funcție de necesități */
+    		left: 50%; /* Adu butonul în mijlocul orizontal al paginii */
+    		transform: translateX(-50%); /* Corectează poziționarea pentru a fi cu adevărat în mijloc pe orizontală */
+        }
+		
+		#myInput {
+            padding: 10px;
+            font-size: 16px;
+			border-radius: 8px;
+			border: 2px solid #000;
+			color: #fff;
+			background-color: #0c0c0c;
+            padding: 10px 20px;
+			position: absolute; /* Setează poziționarea absolută */
+    		top: 400px; /* Ajustează poziția verticală în funcție de necesități */
+    		left: 10%; /* Adu butonul în mijlocul orizontal al paginii */
+        }
+		#buton1 {
+            width: 150px; /* Lățimea butonului 1 */
+            height: 40px; /* Înălțimea butonului 1 */
+            background-color: #0b0b0b; /* Culoarea de fundal a butonului 1 */
+            color: #fff; /* Culoarea textului butonului 1 */
+            margin-right: 10px; /* Spațiu între butoane */
+			left: 55%;
+			top: 400px;
+        }
+
+        /* Stilizează al doilea buton */
+        #buton2 {
+            width: 100px; /* Lățimea butonului 2 */
+            height: 40px; /* Înălțimea butonului 2 */
+            background-color: #e74c3c; /* Culoarea de fundal a butonului 2 */
+            color: #fff; /* Culoarea textului butonului 2 */
+			border: none;
+            left: 80%;
+			top: 400px;
+        }
+		#prompt {
+            width: 100px; /* Lățimea butonului 2 */
+            height: 40px; /* Înălțimea butonului 2 */
+            color: #0c0c0c; /* Culoarea textului butonului 2 */
+			border: none;
+            position: absolute; /* Setează poziționarea absolută */
+    		top: 350px; /* Ajustează poziția verticală în funcție de necesități */
+    		left: 9%; 
+			font-size: 14px;
+        }
+		#user {
+            width: 100px; /* Lățimea butonului 2 */
+            height: 40px; /* Înălțimea butonului 2 */
+            color: #0c0c0c; /* Culoarea textului butonului 2 */
+			border: none;
+            position: absolute; /* Setează poziționarea absolută */
+    		top: 350px; /* Ajustează poziția verticală în funcție de necesități */
+    		left: 50%; 
+			font-size: 14px;
+        }
+		body.black {
+            background-color: #2b2a2a; /* Culoarea neagră */
+            color: #fff; /* Culoarea textului pentru negru */
+        }
+
+        body.white {
+            background-color: #fff; /* Culoarea albă */
+            color: #000; /* Culoarea textului pentru alb */
+        }
+
+        #changeColorButton {
+            font-family: 'cookie', sans-serif;
+            font-size: 16px;
+            padding: 10px 20px;
+            cursor: pointer;
+            border: 2px solid #000;
+            background-color: #090909;
+			color: #fff; /* Culoarea textului butonului 2 */
+            border-radius: 8px;
+            margin-top: 20px; /* Adaugă spațiu între buton și restul conținutului */
+			position: absolute; /* Setează poziționarea absolută */
+    		top: 50px; /* Ajustează poziția verticală în funcție de necesități */
+    		left: 20%; 
+			font-size: 14px;
+        }
+        
+
+    </style>
 </head>
-
 <body>
-	<p>Image Illuminate title</p>
-</body>
+    <p>ImageIlluminate</p>
+    <hr>
+	<button id="buton1">Model</button>
+	<button id="buton2">Run</button>
+	<p id ="prompt">*Prompt</p>
+	<p id ="user">*The AI used</p>
+   
+    <input type="text" id="myInput" placeholder="Image description...">
+	<button id="changeColorButton" onclick="toggleColor()">Background</button>
 
+    <!-- Restul conținutului HTML aici -->
+
+    <script>
+        var currentColor = 'black';
+
+        function toggleColor() {
+            // Obține elementul body
+            var bodyElement = document.body;
+
+            // Comută între clasele black și white
+            currentColor = (currentColor === 'black') ? 'white' : 'black';
+
+            bodyElement.classList.remove('black', 'white');
+            bodyElement.classList.add(currentColor);
+
+            // Schimbă textul butonului
+            var buttonElement = document.getElementById('changeColorButton');
+            buttonElement.innerText = (currentColor === 'black') ? 'Light' : 'Dark';
+        }
+    </script>
+</body>
 </html>
