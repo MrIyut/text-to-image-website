@@ -108,42 +108,164 @@ background-color: #fe2020;
     width: 40px;
     height: 40px;
     margin-right: 40px;
+}
 
-#image-grid {
+body {
 	display: flex;
-	flex-wrap: wrap;
+	justify-content: flex-start;
+	align-items: flex-start;
+	height: 100vh;
+	margin: 0;
+	background-color: #f0f0f0;
+	/* Gri deschis pentru fundal */
+	font-family: 'Arial', sans-serif;
+	/* Adăugat font pentru întregul document */
+}
+
+#buttonContainer {
+	display: flex;
+	flex-direction: column;
+	position: absolute;
+	width: 200px;
+	top: 10px;
+	right: 10px;
+	/* Ajustat de la 'left' la 'right' */
+}
+
+#resetButton:hover {
+	background-color: #696464;
+}
+
+#modeButton:hover {
+	background-color: #696464;
+}
+
+.button {
+	background-color: black;
+	color: white;
+	border: none;
+	padding: 15px;
+	margin-bottom: 10px;
+	/* Ajustat pentru a mări spațiul dintre butoane */
+	cursor: pointer;
+	display: flex;
+	align-items: center;
 	justify-content: center;
+	border-radius: 10px;
+	/* Margini rotunjite pentru butonul OP */
+	width: 170px;
+	/* Ajustat pentru a face toate butoanele de aceeași dimensiune */
+	text-align: center;
+	/* Aliniere text în mijloc */
+}
+
+.centered-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+
+#optionsContainer,
+#resolutionOptionsContainer,
+#seedOptionsContainer,
+#modeOptionsContainer,
+#cfgScaleOptionsContainer,
+#samplesOptionsContainer {
+	display: none;
+	position: absolute;
+	top: 60px;
+	/* Ajustat pentru a poziționa sub butonul principal */
+	right: 17px;
+	/* Ajustat pentru a poziționa la dreapta butonului principal */
+	border: 2px solid #ccc;
+	/* Gri deschis pentru chenarul cu opțiuni */
+	background-color: #ccc;
+	/* Gri deschis pentru chenarul cu opțiuni */
+	padding: 10px;
+	border-radius: 10px;
+	/* Margini rotunjite pentru chenarul cu opțiuni */
+}
+
+#modeOptionsContainer {
+	display: none;
+	position: absolute;
+	top: 380px;
+	right: 190px;
+	/* Ajustat pentru a poziționa la dreapta butonului principal */
+	border: 2px solid #ccc;
+	background-color: #ccc;
+	padding: 10px;
+	border-radius: 10px;
+}
+
+#sliderContainer {
+	margin-bottom: 5px;
+	/* Poți ajusta valoarea în funcție de spațiul dorit */
+}
+
+input {
+	background-color: black;
+	color: white;
+	border: none;
+	padding: 10px;
+	border-radius: 5px;
 	width: 100%;
-	margin: 0 auto;
+	/* Ajustat pentru a ocupa întreaga lățime */
+	margin-bottom: 10px;
+	/* Ajustat pentru a mări spațiul dintre input-uri */
+	text-align: center;
+	/* Aliniere text în mijloc */
+	font-weight: bold;
+	/* Setează textul în negru să fie bold */
+	outline: none;
+	/* Elimină chenarul la focus */
 }
 
-.image-container {
-	width: calc(33.33% - 20px);
-	margin: 10px;
-	box-sizing: border-box;
+.slider-container {
+	width: 80%;
+	margin: auto;
+	text-align: center;
 }
 
-.image-container img {
-	max-width: 100%;
-	height: auto;
-	display: block;
-	margin: 0 auto;
+input[type="range"] {
+	width: 100%;
+	background-color: black;
+	/* Culoarea slider-ului */
+	height: 10px;
+	/* Înălțimea slider-ului */
+	outline: none;
+	-webkit-appearance: none;
+	/* Elimină stilurile implicite pentru WebKit */
 }
 
-@media (min-width: 801px) {
-	#image-grid {
-		width: 66.6%;
-	}
+input[type="range"]::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	/* Elimină stilurile implicite pentru WebKit */
+	width: 20px;
+	/* Lățimea cerculețului */
+	height: 20px;
+	/* Înălțimea cerculețului */
+	background-color: white;
+	/* Culoarea cerculețului */
+	border-radius: 50%;
+	/* Cercul în formă de cerculeț */
+	border: 2px solid black;
+	/* Bordură pentru cerculeț */
+	position: relative;
+	z-index: 1;
+	margin-top: -5px;
 }
 
-@media (max-width: 800px) {
-	.image-container {
-		width: calc(50% - 20px);
-	}
+.labels {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 10px;
 }
 
-@media (max-width: 600px) {
-	.image-container {
-		width: 100%;
-	}
+.labels span {
+	flex: 1;
+	position: relative;
+	z-index: 2;
 }
