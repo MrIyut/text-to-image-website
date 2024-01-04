@@ -1,5 +1,52 @@
 {% extends 'app/base.html' %}
+{% load static %}
 
 {% block body %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 	<p>Illuminate</p>
+
+	<form method="post" action="{% url 'index' %}">
+		{% csrf_token %}
+		<label for="Prompt">Enter Text:</label>
+		<input type="text" id="Prompt" name="Prompt">
+		<button type="submit">Run</button>
+	</form>
+	
+	<!-- Download button -->
+
+	{% if image_paths|length > 0 %}
+		<a href="#" id="downloadBtn" class="download-btn" onclick="downloadImages()">Download</a>
+		<div id="image-grid">
+			{% for image_path in image_paths %}
+			<div class="image-container">
+				<img src="{% static 'app/images/' %}{{ image_path }}" alt="{{ image_path }}"
+					style="max-width: 100%; height: auto;" id="generated_image">
+			</div>
+			{% endfor %}
+		</div>
+
+		<script>
+			function downloadImages() {
+				// Get all elements with the 'generated-image' id
+				var images = document.querySelectorAll('[id^="generated_image"]');
+
+				// Iterate through each image and create a download link
+				images.forEach(function (image, index) {
+					var imageUrl = image.src; // path to the image
+					var downloadLink = document.createElement('a');
+
+					// Set download link attributes
+					downloadLink.href = imageUrl;
+					downloadLink.download = 'image_' + (index + 1) + '.png';
+
+					// Append the download link to the document and trigger a click
+					document.body.appendChild(downloadLink);
+					downloadLink.click();
+
+					// Remove the download link from the document
+					document.body.removeChild(downloadLink);
+				});
+			}
+		</script>
+	{% endif %}
 {% endblock %}
