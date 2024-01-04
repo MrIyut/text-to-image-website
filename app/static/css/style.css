@@ -45,6 +45,34 @@
 	top: 20px;
 }
 
+/* Image of each option*/
+.option-image {
+    width: 40px;
+    height: 40px;
+    margin-right: 40px;
+}
+
+#image-grid {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	width: 100%;
+	margin: 0 auto;
+}
+
+.image-container {
+	width: calc(33.33% - 20px);
+	margin: 10px;
+	box-sizing: border-box;
+}
+
+.image-container img {
+	max-width: 100%;
+	height: auto;
+	display: block;
+	margin: 0 auto;
+}
+
 @media (min-width: 801px) {
 	#image-grid {
 		width: 66.6%;
