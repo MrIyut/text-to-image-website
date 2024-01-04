@@ -70,7 +70,7 @@ def generate_image(**kwargs):
 	image_paths = []
 	for i, image in enumerate(data["artifacts"]):
 		timestamp = math.floor(datetime.timestamp(datetime.now()))
-		image_name = f'image_illuminate_{image["seed"]}_{timestamp}.png'
+		image_name = f'txt2img_{image["seed"]}_{timestamp}.png'
 		image_path = f'./app/static/app/images/{image_name}'
 		image_paths.append(image_name)
 		with open(image_path, "wb") as f:

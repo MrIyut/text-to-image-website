@@ -1,271 +1,64 @@
-/* style.css */
-
-/* Style The Dropdown Button */
-.dropbtn {
-    background-color: black;
-    color: white;
-    padding: 10px 24px;
-    font-size: 20px;
-    font-weight: bold;
-    border-color: black;
-    border-radius: 10px;
-    width: 200px;
-    height: 50px;
+#image-grid {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	width: 100%;
+	margin: 0 auto;
 }
 
-/* The container <div> - needed to position the dropdown content */
-.dropdown {
-    position: absolute;
-    right: 20px;
-    top: 20px;
+.image-container {
+	width: calc(33.33% - 20px);
+	margin: 10px;
+	box-sizing: border-box;
 }
 
-/* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-    display: none;
-    position: absolute;
-    color:white;
-    width: 200px;
-    box-shadow: 10px 24px;
-    border-radius: 10px;
-    font-size: 16px;
-    font-weight: bold;
-    text-align: center;
-    box-sizing: border-box;
+.image-container img {
+	max-width: 100%;
+	height: auto;
+	display: block;
+	margin: 0 auto;
 }
 
-/* Links inside the dropdown */
-.dropdown-content a {
-    color: white;
-    background-color: black;
-    padding: 5px 24px 15px;
-    text-decoration: solid;
-    border: 1px solid;
-    border-color: #ccc;
-    border-radius: 10px;
-    margin: 5px 0;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-}
-
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {
-    background-color: #870808;
-    border-radius: 10px;
-}
-
-/* Change color of a selected option */
-.dropdown-content a.selected {
-    background-color: orange;
-    color: white;
-}
-
-/* Add hover to the selected option */
-.dropdown-content a.selected:hover {
-    background-color: #870808;
-}
-
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
-display: block;
-}
-
-/* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {
-background-color: #fe2020;
-}
-
-/* Style for the download button */
 .download-btn {
-    background-color: black;
-    color: white;
-    padding: 10px 24px;
-    text-decoration: none;
-    text-align: center;
-    font-size: 20px;
-    font-weight: bold;
-    width: 100px;
-    height: 20px;
-    border: 1px solid;
-    border-color: black;
-    border-radius: 10px;
+	background-color: black;
+	color: white;
+	padding: 10px 24px;
+	text-decoration: none;
+	text-align: center;
+	font-size: 20px;
+	font-weight: bold;
+	width: 100px;
+	height: 20px;
+	border: 1px solid;
+	border-color: black;
+	border-radius: 10px;
 }
 
 /* Change color of the download button on hover */
 .download-btn:hover {
-    background-color: #45a049;
+	background-color: #45a049;
 }
 
 .download-btn {
-    position: absolute;
-    left: 20px;
-    top: 20px;
-}
-
-/* Image of each option*/
-.option-image {
-    width: 40px;
-    height: 40px;
-    margin-right: 40px;
-}
-
-body {
-	display: flex;
-	justify-content: flex-start;
-	align-items: flex-start;
-	height: 100vh;
-	margin: 0;
-	background-color: #f0f0f0;
-	/* Gri deschis pentru fundal */
-	font-family: 'Arial', sans-serif;
-	/* Adăugat font pentru întregul document */
-}
-
-#buttonContainer {
-	display: flex;
-	flex-direction: column;
 	position: absolute;
-	width: 200px;
-	top: 10px;
-	right: 10px;
-	/* Ajustat de la 'left' la 'right' */
+	left: 20px;
+	top: 20px;
 }
 
-#resetButton:hover {
-	background-color: #696464;
+@media (min-width: 801px) {
+	#image-grid {
+		width: 66.6%;
+	}
 }
 
-#modeButton:hover {
-	background-color: #696464;
+@media (max-width: 800px) {
+	.image-container {
+		width: calc(50% - 20px);
+	}
 }
 
-.button {
-	background-color: black;
-	color: white;
-	border: none;
-	padding: 15px;
-	margin-bottom: 10px;
-	/* Ajustat pentru a mări spațiul dintre butoane */
-	cursor: pointer;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	border-radius: 10px;
-	/* Margini rotunjite pentru butonul OP */
-	width: 170px;
-	/* Ajustat pentru a face toate butoanele de aceeași dimensiune */
-	text-align: center;
-	/* Aliniere text în mijloc */
-}
-
-.centered-container {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	text-align: center;
-}
-
-#optionsContainer,
-#resolutionOptionsContainer,
-#seedOptionsContainer,
-#modeOptionsContainer,
-#cfgScaleOptionsContainer,
-#samplesOptionsContainer {
-	display: none;
-	position: absolute;
-	top: 60px;
-	/* Ajustat pentru a poziționa sub butonul principal */
-	right: 17px;
-	/* Ajustat pentru a poziționa la dreapta butonului principal */
-	border: 2px solid #ccc;
-	/* Gri deschis pentru chenarul cu opțiuni */
-	background-color: #ccc;
-	/* Gri deschis pentru chenarul cu opțiuni */
-	padding: 10px;
-	border-radius: 10px;
-	/* Margini rotunjite pentru chenarul cu opțiuni */
-}
-
-#modeOptionsContainer {
-	display: none;
-	position: absolute;
-	top: 380px;
-	right: 190px;
-	/* Ajustat pentru a poziționa la dreapta butonului principal */
-	border: 2px solid #ccc;
-	background-color: #ccc;
-	padding: 10px;
-	border-radius: 10px;
-}
-
-#sliderContainer {
-	margin-bottom: 5px;
-	/* Poți ajusta valoarea în funcție de spațiul dorit */
-}
-
-input {
-	background-color: black;
-	color: white;
-	border: none;
-	padding: 10px;
-	border-radius: 5px;
-	width: 100%;
-	/* Ajustat pentru a ocupa întreaga lățime */
-	margin-bottom: 10px;
-	/* Ajustat pentru a mări spațiul dintre input-uri */
-	text-align: center;
-	/* Aliniere text în mijloc */
-	font-weight: bold;
-	/* Setează textul în negru să fie bold */
-	outline: none;
-	/* Elimină chenarul la focus */
-}
-
-.slider-container {
-	width: 80%;
-	margin: auto;
-	text-align: center;
-}
-
-input[type="range"] {
-	width: 100%;
-	background-color: black;
-	/* Culoarea slider-ului */
-	height: 10px;
-	/* Înălțimea slider-ului */
-	outline: none;
-	-webkit-appearance: none;
-	/* Elimină stilurile implicite pentru WebKit */
-}
-
-input[type="range"]::-webkit-slider-thumb {
-	-webkit-appearance: none;
-	/* Elimină stilurile implicite pentru WebKit */
-	width: 20px;
-	/* Lățimea cerculețului */
-	height: 20px;
-	/* Înălțimea cerculețului */
-	background-color: white;
-	/* Culoarea cerculețului */
-	border-radius: 50%;
-	/* Cercul în formă de cerculeț */
-	border: 2px solid black;
-	/* Bordură pentru cerculeț */
-	position: relative;
-	z-index: 1;
-	margin-top: -5px;
-}
-
-.labels {
-	display: flex;
-	justify-content: space-between;
-	margin-top: 10px;
-}
-
-.labels span {
-	flex: 1;
-	position: relative;
-	z-index: 2;
+@media (max-width: 600px) {
+	.image-container {
+		width: 100%;
+	}
 }
