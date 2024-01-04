@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-ta%tc!8j*upawjg4hnam%gf^)!*0q#+gj^5m0&1kgs+wc9-iju
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1',]
 
 
 # Application definition
@@ -70,7 +70,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'image_illuminate.wsgi.application'
-
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
