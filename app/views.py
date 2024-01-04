@@ -9,7 +9,7 @@ def index(response):
         print(response.POST.get('Prompt', ''))
         params = {}
         params['prompt'] = response.POST.get('Prompt', '')
-        params['samples'] = 1
+        params['samples'] = 4
         params['width'] = 832
         params['height'] = 1216
 
