@@ -1,19 +1,308 @@
-<!-- Base template that will be display on every page of the website -->
-
-<html>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-	{% block title %}
-		<title>Image Illuminated</title>
-	{% endblock %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Illuminated</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0; /* Gri deschis pentru fundal */
+            font-family: 'Arial', sans-serif; /* Adăugat font pentru întregul document */
+        }
 
-	{% block style %}
-	{% endblock %}
+        #buttonContainer {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+			width: 200px;
+            top: 10px;
+            right: 10px; /* Ajustat de la 'left' la 'right' */
+        }
+
+        #resetButton:hover {
+			background-color: #696464;
+        }
+
+		#modeButton:hover {
+            background-color: #696464;
+        }
+
+        .button {
+            background-color: black;
+            color: white;
+            border: none;
+            padding: 15px;
+            margin-bottom: 10px; /* Ajustat pentru a mări spațiul dintre butoane */
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px; /* Margini rotunjite pentru butonul OP */
+            width: 170px; /* Ajustat pentru a face toate butoanele de aceeași dimensiune */
+            text-align: center; /* Aliniere text în mijloc */
+        }
+
+        .centered-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+		.option-image {
+			width: 40px;
+            height: 40px;
+            margin-right: 40px;
+		}
+
+        #optionsContainer,
+        #resolutionOptionsContainer,
+        #seedOptionsContainer,
+        #modeOptionsContainer,
+        #cfgScaleOptionsContainer,
+        #samplesOptionsContainer {
+            display: none;
+            position: absolute;
+            top: 60px; /* Ajustat pentru a poziționa sub butonul principal */
+            right: 17px; /* Ajustat pentru a poziționa la dreapta butonului principal */
+            border: 2px solid #ccc; /* Gri deschis pentru chenarul cu opțiuni */
+            background-color: #ccc; /* Gri deschis pentru chenarul cu opțiuni */
+            padding: 10px;
+            border-radius: 10px; /* Margini rotunjite pentru chenarul cu opțiuni */
+        }
+
+        #modeOptionsContainer {
+            display: none;
+            position: absolute;
+            top: 380px;
+            right: 190px; /* Ajustat pentru a poziționa la dreapta butonului principal */
+            border: 2px solid #ccc;
+            background-color: #ccc;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+		#sliderContainer {
+        margin-bottom: 5px; /* Poți ajusta valoarea în funcție de spațiul dorit */
+    }
+
+        input {
+            background-color: black;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            width: 100%; /* Ajustat pentru a ocupa întreaga lățime */
+            margin-bottom: 10px; /* Ajustat pentru a mări spațiul dintre input-uri */
+            text-align: center; /* Aliniere text în mijloc */
+            font-weight: bold; /* Setează textul în negru să fie bold */
+            outline: none; /* Elimină chenarul la focus */
+        }
+
+		.slider-container {
+            width: 80%;
+            margin: auto;
+            text-align: center;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            background-color: black; /* Culoarea slider-ului */
+            height: 10px; /* Înălțimea slider-ului */
+            outline: none;
+            -webkit-appearance: none; /* Elimină stilurile implicite pentru WebKit */
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none; /* Elimină stilurile implicite pentru WebKit */
+            width: 20px; /* Lățimea cerculețului */
+            height: 20px; /* Înălțimea cerculețului */
+            background-color: white; /* Culoarea cerculețului */
+            border-radius: 50%; /* Cercul în formă de cerculeț */
+            border: 2px solid black; /* Bordură pentru cerculeț */
+            position: relative;
+            z-index: 1;
+            margin-top: -5px;
+        }
+
+        .labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .labels span {
+            flex: 1;
+            position: relative;
+            z-index: 2;
+        }
+
+    </style>
 </head>
 
 <body>
-  {% block body %}
-	{% endblock %}
+	<!-- <div class="slider-container">
+        <input type="range" min="1" max="7" value="4" class="slider" id="rangeSlider">
+        <div class="labels">
+            <span>Portrait</span>
+            <span></span>
+            <span>Square</span>
+            <span></span>
+            <span>Landscape</span>
+        </div>
+    </div> -->
+	<div id="sliderContainer" class="slider-container">
+        <input type="range" min="1" max="7" value="4" class="slider" id="rangeSlider">
+        <div class="labels">
+            <span onclick="setOption(1)">Portrait</span>
+            <span onclick="setOption(4)"></span>
+            <span onclick="setOption(7)">Landscape</span>
+        </div>
+        <div class="indicator" id="sliderIndicator"></div>
+    </div>
+    <div id="buttonContainer">
+        <button class="button" id="mainButton" onclick="toggleOptions('optionsContainer')">
+			<!-- <img src="{% static 'app/resources/arrow-1024.png' %}" alt="Option Image" class="option-image"> -->
+			&#8595; OPTIONS &#8595;
+        </button>
+        <div id="optionsContainer">
+            <button class="button" id="resolutionButton" onclick="toggleOptions('resolutionOptionsContainer')">
+                <div class="centered-container">
+                    <div id="resolutionText" style="color: white; margin-bottom: 12px;">Steps</div>
+                    <input type="text" id="resolutionInput" placeholder="Undefined" style="background-color: rgb(65, 70, 65); color: white;">
+                </div>
+                <div id="resolutionOptionsContainer"></div>
+            </button>
+
+            <button class="button" id="seedButton" onclick="toggleOptions('seedOptionsContainer')">
+                <div class="centered-container">
+                    <div id="seedText" style="color: white; margin-bottom: 12px;">Seed</div>
+                    <input type="text" id="seedInput" placeholder="Undefined" style="background-color: rgb(65, 70, 65); color: white;">
+                </div>
+                <div id="seedOptionsContainer"></div>
+            </button>
+
+            <button class="button" id="cfgScaleButton" onclick="toggleOptions('cfgScaleOptionsContainer')">
+                <div class="centered-container">
+                    <div id="cfgScaleText" style="color: white ; margin-bottom: 12px;">CfgScale</div>
+                    <input type="text" id="cfgScaleInput" placeholder="Undefined" style="background-color: rgb(65, 70, 65); color: white;">
+                </div>
+                <div id="cfgScaleOptionsContainer"></div>
+            </button>
+
+            <button class="button" id="samplesButton" onclick="toggleOptions('samplesOptionsContainer')">
+                <div class="centered-container">
+                    <div id="samplesText" style="color: white; margin-bottom: 12px;">Samples</div>
+                    <input type="text" id="samplesInput" placeholder="Undefined" style="background-color: rgb(65, 70, 65); color: white;">
+                </div>
+                <div id="samplesOptionsContainer"></div>
+            </button>
+
+            <button class="button" id="modeButton" onclick="toggleOptions('modeOptionsContainer')">
+                Mode
+            </button>
+            <div id="modeOptionsContainer">
+                <input type="text" class="button" id="darkInput" placeholder="Height" onclick="clearInput('darkInput')">
+                <input type="text" class="button" id="lightInput" placeholder="Width" onclick="clearInput('lightInput')">
+            </div>
+            <button class="button" id="resetButton" onclick="resetButtons()">Reset</button>
+        </div>
+    </div>
+
+    <script>
+
+		var slider = document.getElementById("rangeSlider");
+        var labels = document.querySelector(".labels").children;
+        var indicator = document.getElementById("sliderIndicator");
+
+        slider.addEventListener("input", function () {
+            var value = this.value;
+            var labelsCount = labels.length;
+
+            for (var i = 0; i < labelsCount; i++) {
+                labels[i].style.color = "#000"; // Reset colors
+            }
+
+            labels[value - 1].style.color = "blue"; // Highlight the selected label
+
+            // Move indicator to the selected option
+            var percent = (value - 1) / (labelsCount - 1) * 100;
+            indicator.style.left = "calc(" + percent + "% - 10px)";
+        });
+
+        var initialValues = {
+            resolution: "Resolution",
+            seed: "Seed",
+            cfgScale: "CfgScale",
+            samples: "Samples",
+            dark: "Height",
+            light: "Width"
+        };
+
+        function toggleOptions(containerId) {
+            var optionsContainer = document.getElementById(containerId);
+            if (optionsContainer.style.display === "none" || optionsContainer.style.display === "") {
+                optionsContainer.style.display = "block";
+            } else {
+                optionsContainer.style.display = "none";
+            }
+        }
+
+        function clearInput(inputId) {
+            var inputElement = document.getElementById(inputId);
+            inputElement.value = "";
+            inputElement.focus();
+        }
+
+        function resetResolutionButton() {
+            var resolutionInput = document.getElementById("resolutionInput");
+            var resolutionText = document.getElementById("resolutionText");
+            resolutionInput.value = "";
+            resolutionText.style.color = "white";
+        }
+
+        function resetSeedButton() {
+            var seedInput = document.getElementById("seedInput");
+            var seedText = document.getElementById("seedText")
+            seedInput.value = "";
+            seedText.style.color = "white";
+        }
+
+        function resetCfgScaleButton() {
+            var cfgScaleInput = document.getElementById("cfgScaleInput");
+            var cfgScaleText = document.getElementById("cfgScaleText");
+            cfgScaleInput.value = "";
+            cfgScaleText.style.color = "white";
+        }
+
+        function resetSamplesButton() {
+            var samplesInput = document.getElementById("samplesInput");
+            var samplesText = document.getElementById("samplesText");
+            samplesInput.value = "";
+            samplesText.style.color = "white";
+        }
+
+        function resetButtons() {
+            resetResolutionButton();
+            resetSeedButton();
+            resetCfgScaleButton();
+            resetSamplesButton();
+
+            var darkInput = document.getElementById("darkInput");
+            var lightInput = document.getElementById("lightInput");
+
+            darkInput.value = initialValues.dark;
+            lightInput.value = initialValues.light;
+        }
+    </script>
 </body>
 
 </html>
