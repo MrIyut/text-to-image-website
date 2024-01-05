@@ -2,7 +2,8 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
-
+import shutil
+import atexit
 
 def main():
     """Run administrative tasks."""
@@ -17,6 +18,12 @@ def main():
         ) from exc
     execute_from_command_line(sys.argv)
 
+directory_path = os.path.abspath('./app/static/app/images/')
+def cleanup_function():
+	shutil.rmtree(directory_path, ignore_errors=True)
+	os.makedirs(directory_path, exist_ok=True)
+
+atexit.register(cleanup_function)
 
 if __name__ == '__main__':
     main()
