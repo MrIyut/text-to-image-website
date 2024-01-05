@@ -5,117 +5,117 @@
 /* Style The Dropdown Button */
 /* Style The Dropdown Button */
 .dropbtn {
-    background-color: black;
-    color: white;
-    padding: 10px 24px;
-    font-size: 20px;
-    font-weight: bold;
-    border-color: black;
-    border-radius: 10px;
-    width: 200px;
-    height: 50px;
+	background-color: black;
+	color: white;
+	padding: 10px 24px;
+	font-size: 20px;
+	font-weight: bold;
+	border-color: black;
+	border-radius: 10px;
+	width: 200px;
+	height: 50px;
 }
 
 /* The container <div> - needed to position the dropdown content */
 .dropdown {
-    position: absolute;
-    left: 50%;
-    top: 20px;
-    transform: translateX(-50%);
+	position: absolute;
+	left: 50%;
+	top: 20px;
+	transform: translateX(-50%);
 }
 
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
-    position: absolute;
-    color:white;
-    width: 200px;
-    box-shadow: 10px 24px;
-    border-radius: 10px;
-    font-size: 16px;
-    font-weight: bold;
-    text-align: center;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: row;
+	position: absolute;
+	color: white;
+	width: 200px;
+	box-shadow: 10px 24px;
+	border-radius: 10px;
+	font-size: 16px;
+	font-weight: bold;
+	text-align: center;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: row;
 }
 
 /* Links inside the dropdown */
 .dropdown-content a {
-    color: white;
-    background-color: black;
-    padding: 10px 28px;
-    text-decoration: solid;
-    border: 1px solid;
-    border-color: #ccc;
-    border-radius: 10px;
-    margin: 5px 10px 5px 0px;
-    font-size: 18px;
-    display: flex;
-    text-align: center;
-    align-items: center;
+	color: white;
+	background-color: black;
+	padding: 10px 28px;
+	text-decoration: solid;
+	border: 1px solid;
+	border-color: #ccc;
+	border-radius: 10px;
+	margin: 5px 10px 5px 0px;
+	font-size: 18px;
+	display: flex;
+	text-align: center;
+	align-items: center;
 }
 
 /* Change color of dropdown links on hover */
 .dropdown-content a:hover {
-    background-color: #870808;
-    border-radius: 10px;
+	background-color: #870808;
+	border-radius: 10px;
 }
 
 /* Change color of a selected option */
 .dropdown-content a.selected {
-    background-color: orange;
-    color: white;
+	background-color: orange;
+	color: white;
 }
 
 /* Add hover to the selected option */
 .dropdown-content a.selected:hover {
-    background-color: #870808;
+	background-color: #870808;
 }
 
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
-    display: flex;
-    flex-direction: row;
+	display: flex;
+	flex-direction: row;
 }
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
-    background-color: #fe2020;
+	background-color: #fe2020;
 }
 
 /* Style for the download button */
 .download-btn {
-    background-color: black;
-    color: white;
-    padding: 10px 24px;
-    text-decoration: none;
-    text-align: center;
-    font-size: 20px;
-    font-weight: bold;
-    width: 100px;
-    height: 20px;
-    border: 1px solid;
-    border-color: black;
-    border-radius: 10px;
+	background-color: black;
+	color: white;
+	padding: 10px 24px;
+	text-decoration: none;
+	text-align: center;
+	font-size: 20px;
+	font-weight: bold;
+	width: 100px;
+	height: 20px;
+	border: 1px solid;
+	border-color: black;
+	border-radius: 10px;
 }
 
 /* Change color of the download button on hover */
 .download-btn:hover {
-    background-color: #45a049;
+	background-color: #45a049;
 }
 
 .download-btn {
-    position: absolute;
-    left: 20px;
-    top: 20px;
+	position: absolute;
+	left: 20px;
+	top: 20px;
 }
 
 /* Image of each option*/
 .option-image {
-    width: 50px;
-    height: 50px;
-    margin-right: 30px;
-    border-radius: 10px;
+	width: 50px;
+	height: 50px;
+	margin-right: 30px;
+	border-radius: 10px;
 }
 
 
@@ -305,6 +305,7 @@ p {
 	color: #0f0f0f;
 	text-align: center;
 }
+
 titlu {
 	font-family: 'cookie', sans-serif;
 	font-size: 24px;
@@ -342,7 +343,7 @@ hr {
 	/* Adu butonul în mijlocul orizontal al paginii */
 	width: 270px;
 	height: 40px;
-	
+
 }
 
 #myPrompt {
@@ -362,8 +363,9 @@ hr {
 	/* Ajustează poziția verticală în funcție de necesități */
 	left: 10%;
 	/* Adu butonul în mijlocul orizontal al paginii */
-	
+
 }
+
 #myPromptNegative {
 	width: 500px;
 	/* Lățimea butonului 2 */
@@ -381,7 +383,7 @@ hr {
 	/* Ajustează poziția verticală în funcție de necesități */
 	left: 0%;
 	/* Adu butonul în mijlocul orizontal al paginii */
-	
+
 }
 
 #selectedOption {
@@ -431,7 +433,7 @@ hr {
 	border-radius: 8px;
 	/* vreau ca butonul sa aiba margini rotunjite */
 	position: absolute;
-	
+
 }
 
 #prompt {
@@ -449,7 +451,8 @@ hr {
 	left: 9%;
 	font-size: 14px;
 }
-#negativ-prompt{
+
+#negativ-prompt {
 	width: 150px;
 	/* Lățimea butonului 2 */
 	height: 40px;
@@ -517,19 +520,22 @@ body.white {
 
 
 .title-container {
-    text-align: center; /* Aliniaza textul in centru */
-    margin-top: 20px; /* Adauga un spatiu intre titlu si restul continutului */
+	text-align: center;
+	/* Aliniaza textul in centru */
+	margin-top: 20px;
+	/* Adauga un spatiu intre titlu si restul continutului */
 	top: 10px;
 }
 
 /* Stil pentru titlu */
 .title-container p {
-    font-family: 'cookie', sans-serif;
-    font-size: 24px;
-    font-weight: bold;
-    color: #0f0f0f;
-    text-align: center;
-    margin: 0; /* Elimina marginile implicite ale paragrafului */
+	font-family: 'cookie', sans-serif;
+	font-size: 24px;
+	font-weight: bold;
+	color: #0f0f0f;
+	text-align: center;
+	margin: 0;
+	/* Elimina marginile implicite ale paragrafului */
 	position: absolute;
 	/* Setează poziționarea absolută */
 	top: 30px;
@@ -540,7 +546,7 @@ body.white {
 
 
 #mainButton.button {
-    font-family: 'cookie', sans-serif;
+	font-family: 'cookie', sans-serif;
 	font-size: 16px;
 	padding: 10px 20px;
 	cursor: pointer;
@@ -558,82 +564,89 @@ body.white {
 	left: -20%;
 	font-size: 14px;
 }
+
 /* Stilul pentru butonul principal din dropdown */
 .dropbtn.main-button {
-    width: 150px;
-    height: 40px;
-    background-color: #0b0b0b;
-    color: #fff;
-    margin-right: 10px;
-    font-family: 'cookie', sans-serif;
-    font-size: 16px;
-    padding: 10px 20px;
-    cursor: pointer;
-    border: 2px solid #000;
-    background-color: #0b0b0b;
-    border-radius: 8px;
-    position: absolute;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
+	width: 150px;
+	height: 40px;
+	background-color: #0b0b0b;
+	color: #fff;
+	margin-right: 10px;
+	font-family: 'cookie', sans-serif;
+	font-size: 16px;
+	padding: 10px 20px;
+	cursor: pointer;
+	border: 2px solid #000;
+	background-color: #0b0b0b;
+	border-radius: 8px;
+	position: absolute;
+	top: 20px;
+	left: 50%;
+	transform: translateX(-50%);
 }
 
 .button-container {
 	width: 100px;
 	/* Lățimea butonului 2 */
 	height: 40px;
-    position: absolute;
-    top: 150px;
-    left: 15%;
-    transform: translateX(-60%);
+	position: absolute;
+	top: 150px;
+	left: 15%;
+	transform: translateX(-60%);
 }
 
 
 
 .button-linie {
-    position: absolute;
+	position: absolute;
 	width: 700px;
-    top: 300px;
-    left: 55%;
-    transform: translateX(-50%);
+	top: 300px;
+	left: 55%;
+	transform: translateX(-50%);
 	top: 1000px;
 }
+
 #myPrompt::placeholder {
 	color: #FF8200;
 }
+
 #myPromptNegative::placeholder {
 	color: #FF8200;
 }
 
-.buton-promt{
-	width: 500px; /* Ajustează lățimea la dimensiunea dorită */
-    height: 300px; 
-	padding: 90px; /* Adaugă spațiu interior pentru a păstra conținutul */
-    box-sizing: border-box;
+.buton-promt {
+	width: 500px;
+	/* Ajustează lățimea la dimensiunea dorită */
+	height: 300px;
+	padding: 90px;
+	/* Adaugă spațiu interior pentru a păstra conținutul */
+	box-sizing: border-box;
 	left: 20%;
 	top: 100px;
 }
+
 .imagini {
-    position: absolute;
-    width: 100px;
-    height: 300px;
-    padding: 90px;
-    box-sizing: border-box;
-    left: -5%;
-    top: 500px; /* Ajustează la distanța dorită de marginea de sus a paginii */
+	position: absolute;
+	width: 100px;
+	height: 300px;
+	padding: 90px;
+	box-sizing: border-box;
+	left: -5%;
+	top: 500px;
+	/* Ajustează la distanța dorită de marginea de sus a paginii */
 }
+
 #moonSymbol {
 	/* Stiluri specifice pentru simbolul de lună */
-	margin-right: 5px; /* Spațiu între simbol și textul "Light" */
-  }
-  .navbar {
-    background-color: #504d4d;
-    padding: 20px;
-    text-align: center;
-    width: 20000px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
+	margin-right: 5px;
+	/* Spațiu între simbol și textul "Light" */
 }
 
-  
-
+.navbar {
+	background-color: #504d4d;
+	padding: 20px;
+	text-align: center;
+	width: 20000px;
+	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
 
