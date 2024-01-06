@@ -1,652 +1,85 @@
-/* style.css */
-
-/* style Andreea incepe aici */
-
-/* Style The Dropdown Button */
-/* Style The Dropdown Button */
-.dropbtn {
-	background-color: black;
-	color: white;
-	padding: 10px 24px;
-	font-size: 20px;
-	font-weight: bold;
-	border-color: black;
-	border-radius: 10px;
-	width: 200px;
-	height: 50px;
-}
-
-/* The container <div> - needed to position the dropdown content */
-.dropdown {
-	position: absolute;
-	left: 50%;
-	top: 20px;
-	transform: translateX(-50%);
-}
-
-/* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-	position: absolute;
-	color: white;
-	width: 200px;
-	box-shadow: 10px 24px;
-	border-radius: 10px;
-	font-size: 16px;
-	font-weight: bold;
-	text-align: center;
-	box-sizing: border-box;
-	display: flex;
-	flex-direction: row;
-}
-
-/* Links inside the dropdown */
-.dropdown-content a {
-	color: white;
-	background-color: black;
-	padding: 10px 28px;
-	text-decoration: solid;
-	border: 1px solid;
-	border-color: #ccc;
-	border-radius: 10px;
-	margin: 5px 10px 5px 0px;
-	font-size: 18px;
-	display: flex;
-	text-align: center;
-	align-items: center;
-}
-
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {
-	background-color: #870808;
-	border-radius: 10px;
-}
-
-/* Change color of a selected option */
-.dropdown-content a.selected {
-	background-color: orange;
-	color: white;
-}
-
-/* Add hover to the selected option */
-.dropdown-content a.selected:hover {
-	background-color: #870808;
-}
-
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
-	display: flex;
-	flex-direction: row;
-}
-
-/* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {
-	background-color: #fe2020;
-}
-
-/* Style for the download button */
-.download-btn {
-	background-color: black;
-	color: white;
-	padding: 10px 24px;
-	text-decoration: none;
-	text-align: center;
-	font-size: 20px;
-	font-weight: bold;
-	width: 100px;
-	height: 20px;
-	border: 1px solid;
-	border-color: black;
-	border-radius: 10px;
-}
-
-/* Change color of the download button on hover */
-.download-btn:hover {
-	background-color: #45a049;
-}
-
-.download-btn {
-	position: absolute;
-	left: 20px;
-	top: 20px;
-}
-
-/* Image of each option*/
-.option-image {
-	width: 50px;
-	height: 50px;
-	margin-right: 30px;
-	border-radius: 10px;
-}
-
-
-/* style Ralu incepe aici */
-
-body {
-	display: flex;
-	justify-content: flex-start;
-	align-items: flex-start;
-	height: 100vh;
-	margin: 0;
-	background-color: #f0f0f0;
-	/* Gri deschis pentru fundal */
-	font-family: 'Arial', sans-serif;
-	font-family: 'cookie', sans-serif;
-	background-size: cover;
-	/* Ajustează mărimea imaginii pentru a acoperi întreaga zonă a corpului paginii */
-	background-position: center;
-	/* Centrează imaginea pe ecran */
-	background-color: #7f7979;
-	/* Adăugat font pentru întregul document */
-}
-
-#buttonContainer {
-	display: flex;
-	flex-direction: column;
-	position: absolute;
-	width: 200px;
-	top: 440px;
-	right: 10px;
-	left: 40%;
-	/* Ajustat de la 'left' la 'right' */
-}
-
-#resetButton:hover {
-	background-color: #696464;
-}
-
-#modeButton:hover {
-	background-color: #696464;
-}
-
-.button {
-	background-color: black;
-	color: white;
-	border: none;
-	padding: 15px;
-	margin-bottom: 10px;
-	/* Ajustat pentru a mări spațiul dintre butoane */
-	cursor: pointer;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	border-radius: 10px;
-	/* Margini rotunjite pentru butonul OP */
-	width: 170px;
-	/* Ajustat pentru a face toate butoanele de aceeași dimensiune */
-	text-align: center;
-	/* Aliniere text în mijloc */
-	top: 400px;
-}
-
-.centered-container {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	text-align: center;
-}
-
-.option-image {
-	width: 40px;
-	height: 40px;
-	margin-right: 40px;
-}
-
-#optionsContainer,
-#resolutionOptionsContainer,
-#seedOptionsContainer,
-#modeOptionsContainer,
-#cfgScaleOptionsContainer,
-#samplesOptionsContainer {
-	display: none;
-	position: absolute;
-	top: 60px;
-	/* Ajustat pentru a poziționa sub butonul principal */
-	right: 17px;
-	/* Ajustat pentru a poziționa la dreapta butonului principal */
-	border: 2px solid #ccc;
-	/* Gri deschis pentru chenarul cu opțiuni */
-	background-color: #ccc;
-	/* Gri deschis pentru chenarul cu opțiuni */
-	padding: 10px;
-	border-radius: 10px;
-	/* Margini rotunjite pentru chenarul cu opțiuni */
-}
-
-#modeOptionsContainer {
-	display: none;
-	position: absolute;
-	top: 380px;
-	right: 190px;
-	/* Ajustat pentru a poziționa la dreapta butonului principal */
-	border: 2px solid #ccc;
-	background-color: #ccc;
-	padding: 10px;
-	border-radius: 10px;
-}
-
-#sliderContainer {
-	margin-bottom: 5px;
-	/* Poți ajusta valoarea în funcție de spațiul dorit */
-}
-
-input {
-	background-color: black;
-	color: white;
-	border: none;
-	padding: 10px;
-	border-radius: 5px;
-	width: 100%;
-	/* Ajustat pentru a ocupa întreaga lățime */
-	margin-bottom: 10px;
-	/* Ajustat pentru a mări spațiul dintre input-uri */
-	text-align: center;
-	/* Aliniere text în mijloc */
-	font-weight: bold;
-	/* Setează textul în negru să fie bold */
-	outline: none;
-	/* Elimină chenarul la focus */
-}
-
-.slider-container {
-	width: 80%;
-	margin: auto;
-	text-align: center;
-}
-
-input[type="range"] {
-	width: 100%;
-	background-color: black;
-	/* Culoarea slider-ului */
-	height: 10px;
-	/* Înălțimea slider-ului */
-	outline: none;
-	-webkit-appearance: none;
-	/* Elimină stilurile implicite pentru WebKit */
-}
-
-input[type="range"]::-webkit-slider-thumb {
-	-webkit-appearance: none;
-	/* Elimină stilurile implicite pentru WebKit */
-	width: 20px;
-	/* Lățimea cerculețului */
-	height: 20px;
-	/* Înălțimea cerculețului */
-	background-color: white;
-	/* Culoarea cerculețului */
-	border-radius: 50%;
-	/* Cercul în formă de cerculeț */
-	border: 2px solid black;
-	/* Bordură pentru cerculeț */
-	position: relative;
-	z-index: 1;
-	margin-top: -5px;
-}
-
-.labels {
+.navbar {
+	background-color: var(--secondary-bkg-color);
+	box-shadow: 0px 4px 8px var(--shadow-color);
+	height: 10vh;
+	position: fixed;
 	display: flex;
 	justify-content: space-between;
-	margin-top: 10px;
+	align-items: center;
+	z-index: 1000;
+	top: 0;
+	left: 0;
+	right: 0;
 }
 
-.labels span {
-	flex: 1;
-	position: relative;
-	z-index: 2;
+.centered-content {
+	flex-grow: 1;
 }
 
-/* style Ale incepe aici */
-
-p {
+.text {
 	font-family: 'cookie', sans-serif;
-	font-size: 24px;
+	font-size: 125%;
 	font-weight: bold;
 	font-style: italic;
-	color: #0f0f0f;
-	text-align: center;
+	color: var(--text-color);
 }
 
-titlu {
+.titlu {
 	font-family: 'cookie', sans-serif;
-	font-size: 24px;
+	font-size: 200%;
 	font-weight: bold;
 	font-style: italic;
-	color: #0f0f0f;
+	color: var(--text-color);
 	text-align: center;
+	margin-left: 2.5%;
 }
 
-/* linie neagra */
-hr {
+.container {
+	background-color: var(--button-background-color);
+	color: var(--text-color);
+	border-style: solid;
+	border-color: var(--border-color);
+}
+.container:hover {
+	background-color: var(--button-background-color-hover);
+}
+
+.dark-mode-button {
+	margin-right: 2.5%;
+	border-radius: 50%;
+	height: 50%;
+	aspect-ratio: 1.25;
+	border-width: 20%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.content {
 	width: 80%;
-	border: 1px solid #000;
-	margin: 3% auto;
+	margin: 10vh auto 0;
 }
 
-
-
-#myInput {
-	width: 100px;
-	/* Lățimea butonului 2 */
-	height: 40px;
-	padding: 10px;
-	font-size: 16px;
-	border-radius: 8px;
-	border: 2px solid #000;
-	color: #fff;
-	background-color: #0c0c0c;
-	padding: 10px 20px;
-	position: absolute;
-	/* Setează poziționarea absolută */
-	top: 145px;
-	/* Ajustează poziția verticală în funcție de necesități */
-	left: 10%;
-	/* Adu butonul în mijlocul orizontal al paginii */
-	width: 270px;
-	height: 40px;
-
+.prompt {
+	margin: 3%;
+	max-width: 50%;
 }
 
-#myPrompt {
-	width: 500px;
-	/* Lățimea butonului 2 */
-	height: 100px;
-	padding: 10px;
-	font-size: 16px;
-	border-radius: 8px;
-	border: 2px solid #000;
-	color: #fff;
-	background-color: #0c0c0c;
-	padding: 10px 20px;
-	position: absolute;
-	/* Setează poziționarea absolută */
-	top: 145px;
-	/* Ajustează poziția verticală în funcție de necesități */
-	left: 10%;
-	/* Adu butonul în mijlocul orizontal al paginii */
-
+.prompt:last-child {
+	margin-top: -1.5%;
 }
 
-#myPromptNegative {
-	width: 500px;
-	/* Lățimea butonului 2 */
-	height: 100px;
-	padding: 10px;
-	font-size: 16px;
-	border-radius: 8px;
-	border: 2px solid #000;
-	color: #fff;
-	background-color: #0c0c0c;
-	padding: 10px 20px;
-	position: absolute;
-	/* Setează poziționarea absolută */
-	top: 150px;
-	/* Ajustează poziția verticală în funcție de necesități */
-	left: 0%;
-	/* Adu butonul în mijlocul orizontal al paginii */
-
-}
-
-#selectedOption {
-	width: 190px;
-	/* Lățimea butonului 2 */
-	height: 40px;
-	margin-right: 10px;
-	/* Spațiu între butoane */
-	left: 55%;
-	top: 400px;
-	font-family: 'cookie', sans-serif;
-	font-size: 16px;
-	padding: 10px 20px;
-	cursor: pointer;
-	border: 2px solid #000;
-	background-color: #000;
-	border-radius: 8px;
-	/* vreau ca butonul sa aiba margini rotunjite */
-	position: absolute;
-	/* Setează poziționarea absolută */
-	top: 380px;
-	/* Ajustează poziția verticală în funcție de necesități */
-	left: 55%;
-	/* Adu butonul în mijlocul orizontal al paginii */
-	transform: translateX(-50%);
-}
-
-/* Stilizează al doilea buton */
-#buton2 {
-	width: 100px;
-	/* Lățimea butonului 2 */
-	height: 40px;
-	/* Înălțimea butonului 2 */
-	background-color: #000;
-	/* Culoarea de fundal a butonului 2 */
-	color: #fff;
-	/* Culoarea textului butonului 2 */
-	border: none;
-	left: 70%;
-	top: 550px;
-	font-family: 'cookie', sans-serif;
-	font-size: 16px;
-	padding: 10px 20px;
-	cursor: pointer;
-	border: 2px solid #000;
-	background-color: #000;
-	border-radius: 8px;
-	/* vreau ca butonul sa aiba margini rotunjite */
-	position: absolute;
-
-}
-
-#prompt {
-	width: 100px;
-	/* Lățimea butonului 2 */
-	height: 40px;
-	/* Înălțimea butonului 2 */
-	color: #0c0c0c;
-	/* Culoarea textului butonului 2 */
-	border: none;
-	position: absolute;
-	/* Setează poziționarea absolută */
-	top: 100px;
-	/* Ajustează poziția verticală în funcție de necesități */
-	left: 9%;
-	font-size: 14px;
-}
-
-#negativ-prompt {
-	width: 150px;
-	/* Lățimea butonului 2 */
-	height: 40px;
-	/* Înălțimea butonului 2 */
-	color: #0c0c0c;
-	/* Culoarea textului butonului 2 */
-	border: none;
-	position: absolute;
-	/* Setează poziționarea absolută */
-	top: 250px;
-	/* Ajustează poziția verticală în funcție de necesități */
-	left: 9%;
-	font-size: 14px;
-}
-
-#user {
-	width: 100px;
-	/* Lățimea butonului 2 */
-	height: 40px;
-	/* Înălțimea butonului 2 */
-	color: #0c0c0c;
-	/* Culoarea textului butonului 2 */
-	border: none;
-	position: absolute;
-	/* Setează poziționarea absolută */
-	top: 500px;
-	/* Ajustează poziția verticală în funcție de necesități */
-	left: 10%;
-	font-size: 14px;
-}
-
-body.black {
-	background-color: #2b2a2a;
-	/* Culoarea neagră */
-	color: #fff;
-	/* Culoarea textului pentru negru */
-}
-
-body.white {
-	background-color: #fff;
-	/* Culoarea albă */
-	color: #000;
-	/* Culoarea textului pentru alb */
-}
-
-#changeColorButton {
-	font-family: 'cookie', sans-serif;
-	font-size: 16px;
-	padding: 10px 20px;
-	cursor: pointer;
-	border: 2px solid #000;
-	background-color: #090909;
-	color: #fff;
-	/* Culoarea textului butonului 2 */
-	border-radius: 50px;
-	margin-top: 20px;
-	/* Adaugă spațiu între buton și restul conținutului */
-	position: absolute;
-	/* Setează poziționarea absolută */
-	top: 10px;
-	/* Ajustează poziția verticală în funcție de necesități */
-	left: 80%;
-	font-size: 14px;
-}
-
-
-.title-container {
-	text-align: center;
-	/* Aliniaza textul in centru */
-	margin-top: 20px;
-	/* Adauga un spatiu intre titlu si restul continutului */
-	top: 10px;
-}
-
-/* Stil pentru titlu */
-.title-container p {
-	font-family: 'cookie', sans-serif;
-	font-size: 24px;
-	font-weight: bold;
-	color: #0f0f0f;
-	text-align: center;
-	margin: 0;
-	/* Elimina marginile implicite ale paragrafului */
-	position: absolute;
-	/* Setează poziționarea absolută */
-	top: 30px;
-	/* Ajustează poziția verticală în funcție de necesități */
-	left: 50%;
-}
-
-
-
-#mainButton.button {
-	font-family: 'cookie', sans-serif;
-	font-size: 16px;
-	padding: 10px 20px;
-	cursor: pointer;
-	border: 2px solid #000;
-	background-color: #090909;
-	color: #fff;
-	/* Culoarea textului butonului 2 */
-	border-radius: 8px;
-	margin-top: 20px;
-	/* Adaugă spațiu între buton și restul conținutului */
-	position: absolute;
-	/* Setează poziționarea absolută */
-	top: 90px;
-	/* Ajustează poziția verticală în funcție de necesități */
-	left: -20%;
-	font-size: 14px;
-}
-
-/* Stilul pentru butonul principal din dropdown */
-.dropbtn.main-button {
-	width: 150px;
-	height: 40px;
-	background-color: #0b0b0b;
-	color: #fff;
-	margin-right: 10px;
-	font-family: 'cookie', sans-serif;
-	font-size: 16px;
-	padding: 10px 20px;
-	cursor: pointer;
-	border: 2px solid #000;
-	background-color: #0b0b0b;
-	border-radius: 8px;
-	position: absolute;
-	top: 20px;
-	left: 50%;
-	transform: translateX(-50%);
-}
-
-.button-container {
-	width: 100px;
-	/* Lățimea butonului 2 */
-	height: 40px;
-	position: absolute;
-	top: 150px;
-	left: 15%;
-	transform: translateX(-60%);
-}
-
-
-
-.button-linie {
-	position: absolute;
-	width: 700px;
-	top: 300px;
-	left: 55%;
-	transform: translateX(-50%);
-	top: 1000px;
-}
-
-#myPrompt::placeholder {
-	color: #FF8200;
-}
-
-#myPromptNegative::placeholder {
-	color: #FF8200;
-}
-
-.buton-promt {
-	width: 500px;
-	/* Ajustează lățimea la dimensiunea dorită */
-	height: 300px;
-	padding: 90px;
-	/* Adaugă spațiu interior pentru a păstra conținutul */
+.input-prompt {
+	box-shadow: 0px 4px 8px var(--shadow-color);
+	background-color: var(--border-color);
+	color: var(--contrast-text-color);
+	border-style: solid;
+	border-color: var(--button-background-color);
+	width: 50%;
+	padding: 3.5%;
+	margin-left: 2%;
 	box-sizing: border-box;
-	left: 20%;
-	top: 100px;
 }
-
-.imagini {
-	position: absolute;
-	width: 100px;
-	height: 300px;
-	padding: 90px;
-	box-sizing: border-box;
-	left: -5%;
-	top: 500px;
-	/* Ajustează la distanța dorită de marginea de sus a paginii */
+.input-prompt::placeholder {
+	color: var(--colored-text-color);
 }
-
-#moonSymbol {
-	/* Stiluri specifice pentru simbolul de lună */
-	margin-right: 5px;
-	/* Spațiu între simbol și textul "Light" */
-}
-
-.navbar {
-	background-color: #504d4d;
-	padding: 20px;
-	text-align: center;
-	width: 20000px;
-	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-}
-

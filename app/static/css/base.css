@@ -1,0 +1,42 @@
+:root {
+	--background-color: #ffffff;
+	--secondary-bkg-color: #edf2ea;
+	--text-color: #111111;
+	--contrast-text-color: #edf2ea;
+	--colored-text-color: #ff8200;
+	--button-background-color: #635d5d;
+	--button-background-color-hover: #877d7c;
+	--shadow-color: rgba(0, 0, 0, 0.5);
+	--border-color: #2b2a2a;
+}
+
+.dark-mode {
+	--background-color: #1c1c1b;
+	--secondary-bkg-color: #120d15;
+	--text-color: #ffffff;
+	--contrast-text-color: #120d15;
+	--colored-text-color: #ff8200;
+	--button-background-color: #bdb2b1;
+	--button-background-color-hover: #d6c7c4;
+	--shadow-color: rgba(255, 255, 255, 0.5);
+	--border-color: #7f7a7a;
+}
+
+* {
+	transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+body {
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-start;
+	height: 100vh;
+	margin: 0;
+	font-family: 'cookie', sans-serif;
+	/* Ajustează mărimea imaginii pentru a acoperi întreaga zonă a corpului paginii */
+	background-size: cover;
+	/* Centrează imaginea pe ecran */
+	background-position: center;
+	background-color: var(--background-color);
+	color: var(--text-color);
+}
