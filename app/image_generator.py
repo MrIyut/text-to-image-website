@@ -50,8 +50,6 @@ def generate_image(**kwargs):
 			}
 		],
 	}
-	print(body)
-
 	response = requests.post(url, headers=headers, json=body)
 
 	if response.status_code != 200:

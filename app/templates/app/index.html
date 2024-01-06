@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block scripts %}
-	<script src="{% static 'scripts/darkMode.js' %}"></script>
+	<script src="{% static 'scripts/buttonHandlers.js' %}"></script>
 {% endblock %}
 
 {% block body %}
@@ -15,21 +15,51 @@
 <div class="navbar">
 	<p class="centered-content titlu">Image Illuminate</p>
 
-	<button class="dark-mode-button container" onclick="toggleColor()">
-		<span style="font-size: 150%;" id="symbolContainer">🔆</span>
+	<button class="dark-mode-button container" onclick="toggleMode()">
+		<span style="font-size: 150%;" id="symbol-container">🔆</span>
 	</button>
 </div>
 
 <div class="content">
-	<div class="prompt">
+	<div class="prompt" id="prompt-div">
 		<p class="text">Describe what image you want</p>
 		<input class="container input-prompt" type="text" id="prompt" placeholder="Enter your text here...">
 	</div>
 
-	<div class="prompt">
+	<div class="prompt" id="negative-prompt-div">
 		<p class="text">Describe what you do not want your image to contain</p>
 		<input class="container input-prompt" type="text" id="negative-prompt" placeholder="Enter your text here...">
 	</div>
+
+	<div class="button-container" id="buttons">
+		<button class="container button" id="model-button" onclick="toggleModel()">AI Model</button>
+		<button class="container button" id="options-button" onclick="toggleOptions()">Options</button>
+		<button class="container button" id="generate-button" onclick="generateImage()">Generate Image</button>
+	</div>
+
+	<div class="button-container hidden" id="models">
+		{% for index in options %}
+			<button class="container button image-button" id='{{ index.label }}' onclick="selectModel('{{ index.label }}', '{{ index.image_url }}')">
+				<img src="{% static 'app/images-model/' %}{{ index.image_url }}">
+				{{ index.label }}
+			</button>
+		{% endfor %}
+	</div>
+
+	{% if image_paths|length > 0 %}
+		<div id="image-grid">
+			{% for image_path in image_paths %}
+			<div class="image-container">
+				<img src="{% static 'app/images/' %}{{ image_path }}" alt="{{ image_path }}"
+					style="max-width: 100%; height: auto;" id="generated_image">
+			</div>
+			{% endfor %}
+		</div>
+
+		<div class="button-container download-container" id="download-button">
+			<button class="container button" id="model-button" onclick="downloadImages()">Download</button>
+		</div>
+	{% endif %}
 
 </div>
 

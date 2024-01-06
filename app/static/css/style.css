@@ -36,12 +36,21 @@
 
 .container {
 	background-color: var(--button-background-color);
-	color: var(--text-color);
+	box-shadow: 0px 4px 8px var(--shadow-color);
+	color: var(--contrast-text-color);
 	border-style: solid;
 	border-color: var(--border-color);
+	font-family: 'cookie', sans-serif;
+	font-size: 112.5%;
+	font-weight: bold;
+	text-align: center;
 }
+
 .container:hover {
 	background-color: var(--button-background-color-hover);
+}
+.container:active {
+	background-color: var(--button-background-color-active);
 }
 
 .dark-mode-button {
@@ -70,7 +79,6 @@
 }
 
 .input-prompt {
-	box-shadow: 0px 4px 8px var(--shadow-color);
 	background-color: var(--border-color);
 	color: var(--contrast-text-color);
 	border-style: solid;
@@ -79,8 +87,104 @@
 	padding: 3.5%;
 	margin-left: 2%;
 	box-sizing: border-box;
+	overflow: auto;
 }
 .input-prompt::placeholder {
 	color: var(--colored-text-color);
 }
 
+.button-container {
+	margin-top: 2.5%;
+	margin-left: 2%;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	height: 5%;
+}
+
+.button {
+	margin: 0 2%;
+	height: 100%;
+	width: 12.5%; 
+}
+
+.image-button {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+.image-button img {
+	max-height: 90%;
+	aspect-ratio: 1;
+	border-radius: 25%;
+}
+
+.selected {
+	background-color: #ff8200;
+}
+
+#prompt-div {
+	order: 1;
+}
+#negative-prompt-div {
+	order: 2;
+}
+#buttons {
+	order: 3;
+}
+#options {
+	order: 4;
+}
+
+.hidden {
+	display: none;
+}
+
+#image-grid {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	width: 100%;
+	margin: 0 auto;
+	margin-top: 2.5%;
+	order: 5;
+}
+
+.image-container {
+	width: calc(33.33% - 20px);
+	margin: 10px;
+	box-sizing: border-box;
+}
+
+.image-container img {
+	max-width: 100%;
+	height: auto;
+	display: block;
+	margin: 0 auto;
+}
+
+@media (min-width: 801px) {
+	#image-grid {
+		width: 66.6%;
+	}
+}
+
+@media (max-width: 800px) {
+	.image-container {
+		width: calc(50% - 20px);
+	}
+}
+
+@media (max-width: 600px) {
+	.image-container {
+		width: 100%;
+	}
+}
+
+.download-container {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	margin-bottom: 5%;
+}
