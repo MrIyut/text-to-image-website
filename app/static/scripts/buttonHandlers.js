@@ -7,28 +7,67 @@ var model_bias = {
 	'MickeyMouse': "a childish character with big black nose and ears, always happy and prepared for adventures, which is loved by all children.",
 	'ScoobyDoo': "a brown dog with a lot of energy and happiness, ultra curious and ultra hungry, thinking only about food, very prone to get himself in danger and escape it by pure chance."
 };
+var possibleDimensions = [
+	{ width: 640, height: 1535 },
+	{ width: 768, height: 1344 },
+	{ width: 832, height: 1216 },
+	{ width: 896, height: 1152 },
+	{ width: 1024, height: 1024 },
+	{ width: 1152, height: 896 },
+	{ width: 1216, height: 832 },
+	{ width: 1344, height: 768 },
+	{ width: 1536, height: 640 },
+];
 var selectedModel = '';
 
-function toggleMode() {
-	const elementsToToggle = document.querySelectorAll('.dark-mode-toggle');
+function toggleDarkMode(save) {
+	var darkMode = sessionStorage.getItem('darkMode') ?? 'disabled';
+	if (save === 'true') {
+		darkMode = (darkMode === 'disabled') ? 'enabled' : 'disabled';
+	}
 
-	// Toggle dark mode class on each element
+	const elementsToToggle = document.querySelectorAll('.dark-mode-toggle');
 	elementsToToggle.forEach(element => {
-		element.classList.toggle('dark-mode');
+		if (darkMode === 'disabled') {
+			element.classList.remove('dark-mode');
+		} else {
+			element.classList.add('dark-mode');
+		}
 	});
 
 	var symbolContainer = document.getElementById('symbol-container');
-	symbolContainer.innerHTML = (symbolContainer.innerHTML === '🌙') ? '🔆' : '🌙';
+	symbolContainer.innerHTML = (darkMode === 'enabled') ? '🔆' : '🌙';
+
+	sessionStorage.setItem('darkMode', darkMode);
 }
 
 function toggleModel() {
-	var options = document.getElementById('models');
+	var models = document.getElementById('models');
+	if (models.classList.contains("hidden")) {
+		models.classList.remove("hidden");
+		
+		document.getElementById('options').classList.add('hidden');
+		document.getElementById('slider').classList.add('hidden');
+	} else {
+		models.classList.add("hidden");
+	}
+}
+
+function toggleOptions() {
+	var options = document.getElementById('options');
 	if (options.classList.contains("hidden")) {
 		options.classList.remove("hidden");
-		// disable options div
+
+		document.getElementById('models').classList.add('hidden');
 	} else {
 		options.classList.add("hidden");
+		document.getElementById('slider').classList.add('hidden');
 	}
+}
+
+function toggleDimensions() {
+	var dimensions = document.getElementById('slider');
+	dimensions.classList.toggle('hidden');
 }
 
 function selectModel(value, image_url) {
@@ -56,10 +95,6 @@ function selectModel(value, image_url) {
 	toggleModel()
 }
 
-function toggleOptions() {
-
-}
-
 function getCookie(name) {
 	let cookieValue = null;
 	if (document.cookie && document.cookie !== '') {
@@ -73,6 +108,15 @@ function getCookie(name) {
 		}
 	}
 	return cookieValue;
+}
+
+function parseIfInteger(text) {
+	var parsedValue = parseInt(text, 10);
+	if (!isNaN(parsedValue) && Number.isInteger(parsedValue)) {
+		return parsedValue;
+	} 
+
+	return -1;
 }
 
 function generateImage() {
@@ -94,6 +138,7 @@ function generateImage() {
 		promptInput.setAttribute('name', 'Prompt');
 		promptInput.setAttribute('value', prompt);
 		form.appendChild(promptInput);
+		document.getElementById('prompt').value = '';
 	}
 
 	var negativePrompt = document.getElementById('negative-prompt').value.trim();
@@ -103,8 +148,61 @@ function generateImage() {
 		negativePromptInput.setAttribute('name', 'NegativePrompt');
 		negativePromptInput.setAttribute('value', negativePrompt);
 		form.appendChild(negativePromptInput);
+		document.getElementById('negative-prompt').value = '';
 	}
+
+	var steps = parseIfInteger(document.getElementById('steps-prompt').value.trim());
+	if (steps !== -1) {
+		var stepsInput = document.createElement('input');
+		stepsInput.setAttribute('type', 'number');
+		stepsInput.setAttribute('name', 'steps');
+		stepsInput.setAttribute('value', steps);
+		form.appendChild(stepsInput);
+	}
+
+	var seed = parseIfInteger(document.getElementById('seed-prompt').value.trim());
+	if (seed !== -1) {
+		var seedInput = document.createElement('input');
+		seedInput.setAttribute('type', 'number');
+		seedInput.setAttribute('name', 'seed');
+		seedInput.setAttribute('value', seed);
+		form.appendChild(seedInput);
+	}
+
+	var cfgScale = parseIfInteger(document.getElementById('cfg-scale-prompt').value.trim());
+	if (cfgScale !== -1) {
+		var cfgScaleInput = document.createElement('input');
+		cfgScaleInput.setAttribute('type', 'number');
+		cfgScaleInput.setAttribute('name', 'cfgScale');
+		cfgScaleInput.setAttribute('value', cfgScale);
+		form.appendChild(cfgScaleInput);
+	}
+
+	var samples = parseIfInteger(document.getElementById('samples-prompt').value.trim());
+	if (samples !== -1) {
+		var samplesInput = document.createElement('input');
+		samplesInput.setAttribute('type', 'number');
+		samplesInput.setAttribute('name', 'samples');
+		samplesInput.setAttribute('value', samples);
+		form.appendChild(samplesInput);
+	}
+
+	var sliderValue = parseInt(document.getElementById("range-slider").value);
+	var width = possibleDimensions[sliderValue - 1].width;
+	var height = possibleDimensions[sliderValue - 1].height;
 	
+	var widthInput = document.createElement('input');
+	widthInput.setAttribute('type', 'number');
+	widthInput.setAttribute('name', 'width');
+	widthInput.setAttribute('value', width);
+	form.appendChild(widthInput);
+
+	var heightInput = document.createElement('input');
+	heightInput.setAttribute('type', 'number');
+	heightInput.setAttribute('name', 'height');
+	heightInput.setAttribute('value', height);
+	form.appendChild(heightInput);
+
 	var csrfInput = document.createElement('input');
 	csrfInput.setAttribute('type', 'hidden');
 	csrfInput.setAttribute('name', 'csrfmiddlewaretoken');
@@ -136,4 +234,21 @@ function downloadImages() {
 
 		document.body.removeChild(downloadLink);
 	});
+}
+
+function updateDimensionLabels() {
+	var sliderValue = parseInt(document.getElementById("range-slider").value);
+	
+	document.getElementById('width-label').innerHTML = "Width: " + possibleDimensions[sliderValue - 1].width + "px";
+	document.getElementById('height-label').innerHTML = "Height: " + possibleDimensions[sliderValue - 1].height + "px";
+}
+
+function resetOptions() {
+	document.getElementById('samples-prompt').value = '';
+	document.getElementById('cfg-scale-prompt').value = '';
+	document.getElementById('steps-prompt').value = '';
+	document.getElementById('seed-prompt').value = '';
+
+	document.getElementById("range-slider").value = '5';
+	updateDimensionLabels();
 }

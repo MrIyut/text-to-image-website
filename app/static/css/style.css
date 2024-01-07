@@ -16,6 +16,15 @@
 	flex-grow: 1;
 }
 
+.centered-text {
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	font-family: 'cookie', sans-serif;
+	font-size: 112.5%;
+	font-weight: bold;
+}
+
 .text {
 	font-family: 'cookie', sans-serif;
 	font-size: 125%;
@@ -93,7 +102,7 @@
 	color: var(--colored-text-color);
 }
 
-.button-container {
+.regular-button-container {
 	margin-top: 2.5%;
 	margin-left: 2%;
 	display: flex;
@@ -102,7 +111,7 @@
 	height: 5%;
 }
 
-.button {
+.regular-button {
 	margin: 0 2%;
 	height: 100%;
 	width: 12.5%; 
@@ -136,9 +145,11 @@
 #options {
 	order: 4;
 }
-
-.hidden {
-	display: none;
+#slider {
+	order: 5;
+}
+#download-container {
+	order: 7;
 }
 
 #image-grid {
@@ -148,7 +159,7 @@
 	width: 100%;
 	margin: 0 auto;
 	margin-top: 2.5%;
-	order: 5;
+	order: 6;
 }
 
 .image-container {
@@ -187,4 +198,78 @@
 	justify-content: space-evenly;
 	align-items: center;
 	margin-bottom: 5%;
+}
+
+.options-container {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin-top: 2.5%;
+	margin-left: 2%;
+}
+
+.option-container {
+	background-color: var(--button-background-color);
+	width: 12.5%;
+	height: 100%;
+	align-items: center;
+}
+
+.option-text {
+	font-family: 'cookie', sans-serif;
+	font-size: 112.5%;
+	font-weight: bold;
+	text-align: center;
+	margin-top: 2.5%;
+}
+
+.option-prompt {
+	margin-bottom: 5%;
+	margin-top: -2.5%;
+	width: 80%;
+}
+
+.option-prompt:hover {
+	background-color: var(--button-background-color-active);
+}
+
+.hidden {
+	display: none !important; 
+}
+
+.slider-container {
+	margin-top: 2.5%;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	width: 60%;
+	height: 2%;
+}
+
+.slider {
+	background-color: var(--text-color);
+	box-shadow: 0px 4px 8px var(--shadow-color);
+	border-radius: 10px;
+	-webkit-appearance: none;
+	outline: none;
+	height: 100%;
+	width: 100%;
+}
+
+.slider::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	height: 150%;
+	aspect-ratio: 1;
+	background-color: var(--button-background-color);
+	border-radius: 100%;
+	border: 2px solid var(--border-color);
+	position: center;
+	z-index: 1;
+}
+
+.slider-labels {
+	margin-top: 1.25%;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
 }

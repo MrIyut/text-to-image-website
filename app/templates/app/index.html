@@ -15,7 +15,7 @@
 <div class="navbar">
 	<p class="centered-content titlu">Image Illuminate</p>
 
-	<button class="dark-mode-button container" onclick="toggleMode()">
+	<button class="dark-mode-button container" onclick="toggleDarkMode('true')">
 		<span style="font-size: 150%;" id="symbol-container">🔆</span>
 	</button>
 </div>
@@ -31,19 +31,58 @@
 		<input class="container input-prompt" type="text" id="negative-prompt" placeholder="Enter your text here...">
 	</div>
 
-	<div class="button-container" id="buttons">
-		<button class="container button" id="model-button" onclick="toggleModel()">AI Model</button>
-		<button class="container button" id="options-button" onclick="toggleOptions()">Options</button>
-		<button class="container button" id="generate-button" onclick="generateImage()">Generate Image</button>
+	<div class="regular-button-container" id="buttons">
+		<button class="container regular-button" id="model-button" onclick="toggleModel()">AI Model</button>
+		<button class="container regular-button" id="options-button" onclick="toggleOptions()">OPTIONS</button>
+		<button class="container regular-button" id="generate-button" onclick="generateImage()">Generate Image</button>
 	</div>
 
-	<div class="button-container hidden" id="models">
+	<div class="regular-button-container hidden" id="models">
 		{% for index in options %}
-			<button class="container button image-button" id='{{ index.label }}' onclick="selectModel('{{ index.label }}', '{{ index.image_url }}')">
+			<button class="container regular-button image-button" id='{{ index.label }}' onclick="selectModel('{{ index.label }}', '{{ index.image_url }}')">
 				<img src="{% static 'app/images-model/' %}{{ index.image_url }}">
 				{{ index.label }}
 			</button>
 		{% endfor %}
+	</div>
+
+	<div class="options-container hidden" id="options">
+		<div class="container option-container">
+			<p class="option-text">STEPS</p>
+			<input class="container input-prompt option-prompt" type="text" id="steps-prompt" placeholder="...">
+		</div>
+
+		<div class="container option-container">
+			<p class="option-text">SEED</p>
+			<input class="container input-prompt option-prompt" type="text" id="seed-prompt" placeholder="...">
+		</div>
+
+		<div class="container option-container">
+			<p class="option-text">CFG-SCALE</p>
+			<input class="container input-prompt option-prompt" type="text" id="cfg-scale-prompt" placeholder="...">
+		</div>
+
+		<div class="container option-container">
+			<p class="option-text">SAMPLES</p>
+			<input class="container input-prompt option-prompt" type="text" id="samples-prompt" placeholder="...">
+		</div>
+
+		<div class="container option-container" onclick="toggleDimensions()">
+			<p class="centered-text">DIMENSIONS</p>
+		</div>
+
+		<div class="container option-container" onclick="resetOptions()">
+			<p class="centered-text">RESET</p>
+		</div>
+			
+	</div>
+	
+	<div class="slider-container hidden" id="slider">
+		<input type="range" min="1" max="9" value="5" class="slider" id="range-slider" oninput="updateDimensionLabels()">
+		<div class="slider-labels">
+			<span class="text" id="width-label"></span>
+			<span class="text" id="height-label"></span>
+		</div>
 	</div>
 
 	{% if image_paths|length > 0 %}
@@ -56,12 +95,17 @@
 			{% endfor %}
 		</div>
 
-		<div class="button-container download-container" id="download-button">
-			<button class="container button" id="model-button" onclick="downloadImages()">Download</button>
+		<div class="regular-button-container download-container" id="download-button">
+			<button class="container regular-button" id="model-button" onclick="downloadImages()">Download</button>
 		</div>
 	{% endif %}
 
 </div>
+
+<script>
+	toggleDarkMode('false');
+	updateDimensionLabels();
+</script>
 
 {% endblock %}
 
