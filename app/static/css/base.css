@@ -9,6 +9,7 @@
 	--button-background-color-active: #c7b5b3;
 	--shadow-color: rgba(0, 0, 0, 0.5);
 	--border-color: #2b2a2a;
+	--background-image: url('/static/app/resources/light_mode_bkg.png');
 }
 
 .dark-mode {
@@ -22,6 +23,7 @@
 	--button-background-color-active: #fae6e1;
 	--shadow-color: rgba(255, 255, 255, 0.25);
 	--border-color: #7f7a7a;
+	--background-image: url('/static/app/resources/dark_mode_bkg.png');
 }
 
 * {
@@ -39,4 +41,7 @@ body {
 	background-position: center;
 	background-color: var(--background-color);
 	color: var(--text-color);
+	background-image: var(--background-image);
+	background-size: cover;
+	background-position: center;
 }
