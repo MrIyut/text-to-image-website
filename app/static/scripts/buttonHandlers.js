@@ -8,7 +8,7 @@ var model_bias = {
 	'ScoobyDoo': "a brown dog with a lot of energy and happiness, ultra curious and ultra hungry, thinking only about food, very prone to get himself in danger and escape it by pure chance."
 };
 var possibleDimensions = [
-	{ width: 640, height: 1535 },
+	{ width: 640, height: 1536 },
 	{ width: 768, height: 1344 },
 	{ width: 832, height: 1216 },
 	{ width: 896, height: 1152 },
