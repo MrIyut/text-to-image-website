@@ -33,6 +33,9 @@ In the video, we showcase the user interface, walk through the process of genera
 
 -> Backend Developer:Integrate the Django framework with the frontend to establish the web application. Integrate the Django framework with the frontend to establish the web application.
 Integrate the Django framework with the frontend to establish the web application.
+
 -> Implement the dark mode feature and ensure a consistent design. Implement Run Button and the Negative and Positive prompts.
+
 -> Implementing the functionality of the options button and the download button.
+
 -> One of our team members took the lead in implementing the model button and ensured that, after everyone pushed their HTML, CSS, and JavaScript elements, they were appropriately placed on the web page.
